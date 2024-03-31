@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  eureka-server:
+    image: eureka-server:latest
+    ports:
+      - "8761:8761"
+    networks:
+      - environment-pollution-network
+
+  rabbitmq:
+    image: rabbitmq:3.12.11-management
+    ports:
+      - "5672:5672"
+    networks:
+      - environment-pollution-network
+
+networks:
+  environment-pollution-network:
+    external: true
+    name: project_environment-pollution-network

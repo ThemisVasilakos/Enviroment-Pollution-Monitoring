@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analysis-microservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: analysis-microservice
+  template:
+    metadata:
+      labels:
+        app: analysis-microservice
+    spec:
+      containers:
+        - name: analysis-microservice
+          image: "themisvas/analysis-microservice:latest"
+          ports:
+            - containerPort: 8084
